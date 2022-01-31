@@ -29,42 +29,39 @@ def todo_amount(amount):
 class CreateLabel:
     amount = 0
     todo_amount(amount)
-    max_todos = {0: None, 1: None, 2: None, 3: None, 4: None}
+    max_todos = []
 
     def __init__(self, todo):
         if len(todo) >= 5 > self.amount:
-            self.max_todos[self.amount] = Label(window, text=todo)
+            self.max_todos.append(Label(window, text=todo))
             self.max_todos[self.amount].grid(row=CreateLabel.amount, column=3)
             CreateLabel.amount += 1
-            print(self.max_todos.values())
-            if self.amount == 4:
-                self.max_todos[2].grid_forget()
-                print(self.max_todos.values())
 
 
-    def destroy_widget(self):
-        try:
-            self.grid_forget()
-            self.amount -= 1
-
-        except:
-            print('there is no object')
+def destroy_widget():
+    if 5 >= len(CreateLabel.max_todos) > 0:
+        CreateLabel.max_todos[CreateLabel.amount - 1].grid_forget()
+        CreateLabel.max_todos.pop(CreateLabel.amount - 1)
+        CreateLabel.amount -= 1
 
 
-# Simple text on top of window
-enter_text = Label(
-    window, text='Please enter something ToDo', font=('JetBrains Mono', 10))
+def testing():
+    CreateLabel(text_box.get())
+    text_box.delete(0, 'end')
 
 
 # TextBox Button
 text_box = Entry(
     window, background='light yellow', width=35, bd=2)
 
+# Simple text on top of window
+enter_text = Label(
+    window, text='Please enter something ToDo', font=('JetBrains Mono', 10))
 
 # Submit Button
 submit_btn = Button(
-    window, text='Submit', width=5, bd=2, activeforeground='green', command=lambda: CreateLabel(text_box.get()))
-
+    window, text='Submit', width=5, bd=2, activeforeground='green', command=testing
+)
 
 # Quit Button
 quit_btn = Button(
@@ -76,11 +73,11 @@ quit_btn = Button(
 
 Button(
     window,
-    text='Submit',
+    text='Delete',
     width=5,
     bd=2,
-    activeforeground='green',
-    command=lambda: CreateLabel.destroy_widget()
+    activeforeground='red',
+    command=destroy_widget
 ).grid(row=5, column=2)
 
 
