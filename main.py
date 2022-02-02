@@ -16,18 +16,24 @@ class CreateLabel:
     max_todos = []
 
     def __init__(self, todo):
-        if len(todo) >= 5 > self.amount:
-            self.max_todos.append(Label(window, text=todo))
-            self.max_todos[self.amount].grid(row=CreateLabel.amount, column=3)
-            CreateLabel.amount += 1
+        if len(todo) >= 3:
+            if self.amount < 5:
+                self.max_todos.append(Label(window, text=todo))
+                self.max_todos[self.amount].grid(row=CreateLabel.amount, column=2)
+                CreateLabel.amount += 1
 
 
 def todo_amount():
+    if CreateLabel.amount != 0:
+        color = 'red'
+    else:
+        color = 'green'
+
     todo_length = Label(
         window,
         text=f'ToDo\'s left {CreateLabel.amount}',
         font=('JetBrains Mono', 10),
-        foreground='red',
+        foreground=color,
         background='black',
         highlightbackground='black')
     todo_length.grid_forget()
@@ -85,12 +91,12 @@ delete_btn = Button(
 enter_text.grid(row=0, column=0, columnspan=2)
 text_box.grid(row=1, column=0, columnspan=2)
 submit_btn.grid(row=2, column=0, columnspan=2)
-delete_btn.grid(row=5, column=2)
-quit_btn.grid(row=6, column=1, columnspan=2, sticky='SE')
+delete_btn.grid(row=5, column=2, pady=5, padx=10, sticky='SE')
+quit_btn.grid(row=6, column=2, pady=10, padx=10, sticky='SE')
 
 
 window.grid_rowconfigure(5, weight=1)
 window.columnconfigure(1, weight=1)
 
-
+todo_amount()
 window.mainloop()
