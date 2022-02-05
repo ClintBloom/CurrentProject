@@ -7,7 +7,7 @@ from tkinter import Entry
 window_title = 'ToDo List'
 window = tkinter.Tk()
 window.title(window_title)
-window.geometry("400x200")
+window.geometry("400x230")
 window.resizable(False, False)
 
 
@@ -75,6 +75,7 @@ quit_btn = Button(
     window,
     text='Quit',
     width=6,
+    height=1,
     activeforeground='red',
     command=window.destroy)
 
@@ -82,8 +83,8 @@ quit_btn = Button(
 delete_btn = Button(
     window,
     text='Delete',
-    width=5,
-    bd=2,
+    width=6,
+    height=1,
     activeforeground='red',
     command=destroy_widget)
 
@@ -91,7 +92,7 @@ delete_btn = Button(
 enter_text.grid(row=0, column=0, columnspan=2)
 text_box.grid(row=1, column=0, columnspan=2)
 submit_btn.grid(row=2, column=0, columnspan=2)
-delete_btn.grid(row=5, column=2, pady=5, padx=10, sticky='SE')
+delete_btn.grid(row=5, column=2, padx=10, sticky='SE')
 quit_btn.grid(row=6, column=2, pady=10, padx=10, sticky='SE')
 
 
