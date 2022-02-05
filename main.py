@@ -1,11 +1,11 @@
-import tkinter
+from tkinter import Tk
 from tkinter import Label
 from tkinter import Button
 from tkinter import Entry
 
 
 window_title = 'ToDo List'
-window = tkinter.Tk()
+window = Tk()
 window.title(window_title)
 window.geometry("400x230")
 window.resizable(False, False)
